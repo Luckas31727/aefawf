@@ -104,10 +104,16 @@ h1{font-family:HoneyRaspberries,Georgia,serif;font-weight:400;font-size:clamp(3.
 .jar-sparkles .dust{position:absolute;left:var(--x);top:var(--y);width:var(--size);height:var(--size);border-radius:50%;background:#fff4cb;box-shadow:0 0 4px 1px #ffd977aa;opacity:.85}
 .jar-base-glint{position:absolute;z-index:0;left:34px;bottom:3px;width:88px;height:7px;border-bottom:2px solid #fff9;border-radius:0 0 70% 50%;transform:rotate(-3deg);filter:blur(.35px);opacity:.55;pointer-events:none}
 </style>
+<style>
+.sky-content{width:min(92vw,980px)}
+.sky h2{max-width:25ch;margin:0 auto 16px;font-size:clamp(1.8rem,4.3vw,3.5rem);line-height:1.2;text-wrap:balance}
+.sky p{font-size:clamp(1rem,2.3vw,1.35rem)}
+.card h2{font-size:clamp(1.45rem,4vw,1.9rem);max-width:100%;overflow-wrap:anywhere}
+</style>
 </head>
 <body>
 <main id="main">
-<h1>Hay seis estrellas</h1>
+<h1>Caelum in vitro</h1>
 <section class="scene" id="scene" aria-label="Frasco y estrellas interactivas">
 <div class="table-glow" aria-hidden="true"></div>
 <button class="jar-button" id="jarButton" aria-label="Abrir el frasco de estrellas">
@@ -141,7 +147,21 @@ h1{font-family:HoneyRaspberries,Georgia,serif;font-weight:400;font-size:clamp(3.
 <i class="dust" style="--x:35%;--y:47%;--size:2px"></i>
 <i class="dust" style="--x:89%;--y:59%;--size:2px"></i>
 <i class="dust" style="--x:79%;--y:80%;--size:2px"></i>
-<i class="dust" style="--x:23%;--y:87%;--size:2px"></i></div></div><div class="jar-base-glint" aria-hidden="true"></div></div>
+<i class="dust" style="--x:23%;--y:87%;--size:2px"></i><i class="dust" style="--x:17%;--y:5%;--size:2px"></i>
+<i class="dust" style="--x:34%;--y:12%;--size:2px"></i>
+<i class="dust" style="--x:61%;--y:9%;--size:2px"></i>
+<i class="dust" style="--x:83%;--y:10%;--size:2px"></i>
+<i class="dust" style="--x:14%;--y:18%;--size:2px"></i>
+<i class="dust" style="--x:76%;--y:19%;--size:2px"></i>
+<i class="dust" style="--x:94%;--y:34%;--size:2px"></i>
+<i class="dust" style="--x:54%;--y:44%;--size:2px"></i>
+<i class="dust" style="--x:81%;--y:58%;--size:2px"></i>
+<i class="dust" style="--x:95%;--y:54%;--size:2px"></i>
+<i class="dust" style="--x:9%;--y:80%;--size:2px"></i>
+<i class="dust" style="--x:77%;--y:80%;--size:2px"></i>
+<i class="dust" style="--x:88%;--y:83%;--size:2px"></i>
+<i class="dust" style="--x:15%;--y:91%;--size:2px"></i>
+<i class="dust" style="--x:73%;--y:95%;--size:2px"></i></div></div><div class="jar-base-glint" aria-hidden="true"></div></div>
 </div>
 <p>Toca el frasco para abrir</p></button>
 <div class="stars-area" id="starsArea" aria-label="Seis estrellas">
@@ -152,7 +172,7 @@ h1{font-family:HoneyRaspberries,Georgia,serif;font-weight:400;font-size:clamp(3.
 <button class="reset" id="resetButton">Volver</button>
 </main>
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="card"><button class="close" id="closeModal" aria-label="Cerrar">×</button><div class="big-star" aria-hidden="true">★</div><h2 id="modalTitle">Estrella para ti</h2><p id="messageText"></p></div></div>
-<div class="sky" id="sky" aria-hidden="true"><div class="sky-back" id="skyBack"></div><div class="sky-content"><h2>El cielo, es como un lienzo infinito, en donde la distancia y la memoria, no estan.</h2><p>Todo el cielo brilla para ti, feliz cumpleaños.</p><button class="sky-close" id="skyClose">Volver a las estrellas</button></div></div>
+<div class="sky" id="sky" aria-hidden="true"><div class="sky-back" id="skyBack"></div><div class="sky-content"><h2>Todo el cielo brilla para ti</h2><p>El cielo es un lienzo infinito donde la distancia y la memoria no están. Feliz cumpleaños, Ashley.</p><button class="sky-close" id="skyClose">Volver a las estrellas</button></div></div>
 <script>
 const mensajes=[
  "Hoy el universo parece haberse puesto de acuerdo: entre tantas posibilidades, las estrellas se alinearon para celebrar que llegaste al mundo. Y aunque el cielo entero brillara por ti, seguirías siendo mucho más que una fecha: eres alguien muy importante para mí. Feliz cumpleaños, Ashley.",
@@ -172,21 +192,22 @@ const progress=document.querySelector("#progress");
 const sky=document.querySelector("#sky");
 const skyBack=document.querySelector("#skyBack");
 const seen=new Set();
+const starNames=["Sidera tibi favent","Mein Polarstern","Wie ein wolkenloser Himmel","Lux semper","Von Herzen","Satis est quod es"];
 
 jarButton.addEventListener("click",()=>{scene.classList.add("opened");jarButton.setAttribute("aria-label","Frasco abierto")});
 stars.forEach((star,index)=>star.addEventListener("click",()=>{
  messageText.textContent=mensajes[index];
- modalTitle.textContent="Estrella "+(index+1);
+ modalTitle.textContent=starNames[index];
  modal.classList.add("show");
  star.classList.add("seen");
  seen.add(index);
  const left=6-seen.size;
- progress.textContent=left===0?"¡Leíste los seis mensajes! Mira el cielo.":left+" "+(left===1?"mensaje espera":"mensajes esperan")+" ser descubiertos";
+ progress.textContent=left===0?":3":left+" "+(left===1?"mensaje espera":"mensajes esperan")+" ser descubiertos";
  if(seen.size===6)setTimeout(()=>{closeMessage();skyBack.classList.add("show");sky.classList.add("show");sky.setAttribute("aria-hidden","false")},550);
 }));
 function closeMessage(){modal.classList.remove("show")}
 function hideSky(){sky.classList.remove("show");skyBack.classList.remove("show");sky.setAttribute("aria-hidden","true")}
-function resetStars(){closeMessage();hideSky();seen.clear();stars.forEach(star=>star.classList.remove("seen"));scene.classList.remove("opened");progress.textContent="6 mensajes esperan ser descubiertos";jarButton.setAttribute("aria-label","Abrir el frasco de estrellas")}
+function resetStars(){closeMessage();hideSky();seen.clear();stars.forEach(star=>star.classList.remove("seen"));scene.classList.remove("opened");progress.textContent="6 mensajes para ti :3";jarButton.setAttribute("aria-label","Abrir el frasco de estrellas")}
 document.querySelector("#closeModal").addEventListener("click",closeMessage);
 modal.addEventListener("click",event=>{if(event.target===modal)closeMessage()});
 document.querySelector("#skyClose").addEventListener("click",hideSky);
@@ -217,6 +238,9 @@ makeSky();
 </script>
 </body>
 </html>
+
+
+
 
 
 
