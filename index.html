@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#172b5b">
+<title>Un frasco de estrellas</title>
+<style>
+@font-face{font-family:HoneyRaspberries;src:url("Honey-and-Raspberries.ttf") format("truetype");font-display:swap}
+:root{color-scheme:dark;--gold:#ffd873;--cream:#fff0c6;--night:#172b5b;--lavender:#c9d4e8}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Georgia,"Times New Roman",serif;color:var(--cream)}
+body{min-height:100vh;min-height:100svh;overflow-x:hidden;display:grid;place-items:center;padding:24px 18px 30px;position:relative;background:#172b5b url("night-brush.svg") center/cover fixed}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.32;background-image:radial-gradient(1px 1px at 12% 22%,#fff5d9 98%,transparent),radial-gradient(2px 2px at 73% 12%,#ffdf82 98%,transparent),radial-gradient(1px 1px at 89% 47%,#fff5d9 98%,transparent),radial-gradient(1px 1px at 28% 73%,#fff5d9 98%,transparent),radial-gradient(2px 2px at 51% 34%,#ffdf82 98%,transparent),radial-gradient(1px 1px at 42% 15%,#fff5d9 98%,transparent);background-size:370px 310px;animation:soft-twinkle 6s ease-in-out infinite alternate}
+@keyframes soft-twinkle{to{opacity:.5}}
+main{width:min(100%,850px);text-align:center;position:relative;z-index:1}
+h1{font-family:HoneyRaspberries,Georgia,serif;font-weight:400;font-size:clamp(3.2rem,8.5vw,6rem);line-height:1;margin:0;color:#ffe39a;letter-spacing:.01em;text-shadow:0 2px 0 #9d673e,0 0 24px #ffd45c55}
+.scene{height:clamp(390px,57vh,465px);min-height:390px;display:grid;place-items:center;position:relative;isolation:isolate;margin:0 auto}
+.scene:after{content:"";position:absolute;z-index:-1;left:10%;right:10%;bottom:34px;height:14px;border-radius:50%;background:linear-gradient(90deg,transparent,#ba935e66 17%,#f3d898aa 49%,#a77b4e77 82%,transparent);filter:blur(3px)}
+.table-glow{position:absolute;z-index:-1;bottom:31px;width:min(65%,490px);height:42px;border-radius:50%;background:#ffd778;filter:blur(32px);opacity:.18}
+.jar-button{appearance:none;border:0;background:none;padding:0;cursor:pointer;position:relative;z-index:2;transition:transform .65s cubic-bezier(.2,.75,.2,1),opacity .5s;outline-offset:9px}
+.jar-button:hover{transform:translateY(-5px) rotate(-1deg)}
+.jar-button:focus-visible,.star:focus-visible,.reset:focus-visible,.close:focus-visible,.sky-close:focus-visible{outline:2px solid #fff1bd;outline-offset:6px}
+.jar{width:202px;height:250px;position:relative;filter:drop-shadow(0 18px 22px #070e2499);transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.jar-lid{position:absolute;z-index:4;top:-7px;left:43px;width:116px;height:19px;border:1px solid #f5d394;border-radius:6px;background:linear-gradient(180deg,#f1d698,#c58d4c 55%,#93613d);box-shadow:inset 0 2px 2px #fff8,0 3px 7px #0c163066;transition:transform .65s}
+.jar-neck{position:absolute;z-index:3;top:8px;left:49px;width:104px;height:22px;border:3px solid #e5f4efaa;border-bottom:0;border-radius:9px 9px 0 0;background:linear-gradient(90deg,#d7f3f522,#fff9 50%,#b9dff025)}
+.jar-body{position:absolute;inset:22px 17px 0;border:3px solid #dcecf0a8;border-top:1px solid #e7f6f4a8;border-radius:25px 25px 37px 37px;background:linear-gradient(110deg,#f2ffff1c 0%,#c3e8f211 16%,transparent 34%,#eefcff0a 69%,#dff4ff18 100%),linear-gradient(180deg,#d7f4ff10,#7799d210 78%,#ffdc8a1b);box-shadow:inset 8px 0 13px #fff2,inset -8px 0 14px #c9efff18,0 0 18px #bceaff18;overflow:hidden}
+.jar-body:before{content:"";position:absolute;z-index:3;left:11px;top:26px;width:12px;height:128px;border-radius:60%;background:linear-gradient(180deg,#fff9,transparent);opacity:.3;filter:blur(2px);transform:rotate(3deg);pointer-events:none}
+.jar-body:after{content:"";position:absolute;z-index:3;right:10px;top:50px;width:5px;height:84px;border-radius:50%;background:linear-gradient(180deg,transparent,#fff8,transparent);opacity:.45;filter:blur(1px);pointer-events:none}
+.jar-stars{position:absolute;z-index:1;inset:25px 2px 8px;display:block;overflow:hidden}
+.jar-stars:before{content:"";position:absolute;z-index:0;left:5%;right:5%;top:17%;bottom:4%;border-radius:50%;background:radial-gradient(ellipse at 50% 58%,#ffe28a55 0,#f8c65f28 46%,transparent 77%);filter:blur(12px);pointer-events:none}
+.jar-stars:after{content:"";position:absolute;z-index:0;inset:4% 1%;pointer-events:none;background:radial-gradient(2px 2px at 14% 11%,#fff2bd 55%,transparent 100%),radial-gradient(1.5px 1.5px at 80% 13%,#f7cf75 55%,transparent 100%),radial-gradient(1.8px 1.8px at 92% 51%,#fff0ad 55%,transparent 100%),radial-gradient(1.5px 1.5px at 5% 68%,#f8d77f 55%,transparent 100%),radial-gradient(2px 2px at 76% 73%,#fff0ae 55%,transparent 100%),radial-gradient(1px 1px at 21% 88%,#fff2bd 55%,transparent 100%),radial-gradient(1.4px 1.4px at 87% 91%,#f8d77f 55%,transparent 100%)}
+.jar-stars span{display:block;position:absolute;width:1em;height:1em;line-height:1;color:transparent;font-size:3rem;filter:drop-shadow(0 2px 2px #13213d99) drop-shadow(0 0 7px #ffd45c77);animation:star-glimmer 3.3s ease-in-out infinite alternate}
+.jar-stars span:before{content:"";position:absolute;inset:0;clip-path:polygon(50% 0%,62% 32%,96% 30%,71% 52%,82% 89%,51% 69%,19% 94%,30% 58%,3% 37%,39% 34%);background:linear-gradient(137deg,#fff6c3 1%,#ffe27d 26%,#efb747 58%,#d9913c 78%,#ffe38a 100%)}
+.jar-stars span:after{content:"";position:absolute;left:39%;top:24%;width:17%;height:39%;border-radius:80%;background:linear-gradient(#fffbd8aa,#fff6d000);filter:blur(1px);transform:rotate(18deg)}
+.jar-stars span:nth-child(1){left:3%;top:36%;font-size:2.8rem;z-index:1;transform:rotate(-12deg);animation-delay:-.7s}
+.jar-stars span:nth-child(2){left:29%;top:17%;font-size:3.05rem;z-index:2;transform:rotate(8deg);animation-delay:-1.2s}
+.jar-stars span:nth-child(3){left:59%;top:34%;font-size:2.75rem;z-index:1;transform:rotate(-7deg);animation-delay:-.3s}
+.jar-stars span:nth-child(4){left:13%;top:54%;font-size:3.05rem;z-index:3;transform:rotate(10deg);animation-delay:-1.8s}
+.jar-stars span:nth-child(5){left:43%;top:52%;font-size:3.1rem;z-index:4;transform:rotate(-9deg);animation-delay:-.5s}
+.jar-stars span:nth-child(6){left:34%;top:75%;font-size:2.6rem;z-index:5;transform:rotate(12deg);animation-delay:-1.4s}
+@keyframes star-glimmer{from{opacity:.86;filter:drop-shadow(0 1px 2px #13213d99) drop-shadow(0 0 5px #ffd45c55)}to{opacity:1;filter:drop-shadow(0 2px 2px #13213d99) drop-shadow(0 0 11px #fff0a6aa)}}
+.jar-button p{font-family:HoneyRaspberries,Georgia,serif;font-size:1.12rem;color:#f9d98f;text-shadow:0 1px 9px #ffd45c55;margin:13px 0 0}
+.opened .jar-button{transform:translateY(91px) scale(.55) rotate(-9deg);opacity:.45;pointer-events:none}
+.opened .jar-lid{transform:translate(34px,-11px) rotate(24deg)}
+.stars-area{position:absolute;z-index:3;inset:0;display:grid;grid-template-columns:repeat(3,70px);grid-template-rows:repeat(2,72px);justify-content:center;align-content:center;gap:18px 25px;opacity:0;transform:translateY(28px) scale(.8);pointer-events:none;transition:opacity .65s,transform .65s}
+.opened .stars-area{opacity:1;transform:none;pointer-events:auto}
+.star{appearance:none;border:0;padding:0;background:none;color:#ffdc72;font-family:Georgia,serif;font-size:3.6rem;line-height:1;cursor:pointer;text-shadow:0 0 5px #fff0a6,0 0 13px #ffd45c,0 0 25px #ffd45c77;transform:rotate(-8deg);transition:transform .25s,color .25s,filter .25s;animation:star-breathe 2.7s ease-in-out infinite alternate}
+.star:nth-child(2n){font-size:3.25rem;transform:rotate(8deg);animation-delay:-1.2s}
+.star:nth-child(3n){transform:rotate(-13deg)}
+.star:hover{transform:scale(1.18) rotate(0);color:#fff1b1;filter:drop-shadow(0 0 11px #ffe9a1)}
+.star.seen{color:#ffeaa5}
+@keyframes star-breathe{to{filter:drop-shadow(0 0 9px #fff0b4)}}
+.progress{min-height:24px;color:#d8d9e6;font-size:.9rem;margin:0 0 10px}
+.reset{border:1px solid #ffdc6570;background:#12295888;color:#ffefc0;border-radius:999px;padding:10px 18px;cursor:pointer;font:inherit;font-size:.9rem;transition:background .2s,transform .2s}
+.reset:hover,.sky-close:hover{background:#294779;transform:translateY(-1px)}
+.modal{position:fixed;z-index:10;inset:0;display:grid;place-items:center;padding:20px;background:#091329b8;backdrop-filter:blur(5px);opacity:0;pointer-events:none;transition:opacity .25s}
+.modal.show{opacity:1;pointer-events:auto}
+.card{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;width:min(86vw,370px);aspect-ratio:1;min-height:0;padding:40px 34px;border:1px solid #ffe49c88;border-radius:22px;background:linear-gradient(145deg,#203c70ed,#172b56ed),url("night-brush.svg") center/cover;box-shadow:0 0 24px #ffd96355,0 0 75px #5a81bb55,inset 0 0 28px #ffe38b16;text-align:center}
+.card:before{content:"";position:absolute;inset:-8px;border:1px solid #ffe49c38;border-radius:28px;pointer-events:none;filter:blur(1px)}
+.card .big-star{color:#ffd45c;font-size:2.4rem;text-shadow:0 0 15px #ffd45c;margin-bottom:15px}
+.card h2{font-family:HoneyRaspberries,Georgia,serif;font-weight:400;font-size:1.9rem;color:#ffe5a3;margin:0 0 12px}
+.card p{font-family:Georgia,serif;font-size:1.08rem;line-height:1.7;color:#fff2ce;margin:0;white-space:pre-wrap}
+.close{position:absolute;z-index:1;right:12px;top:12px;width:36px;height:36px;border:1px solid #ffffff30;border-radius:50%;color:#fff;background:#ffffff12;font-size:1.2rem;cursor:pointer}
+.sky{position:fixed;z-index:8;inset:0;display:grid;place-items:center;overflow:hidden;background-color:#172b5b;background-image:linear-gradient(180deg,#101a3a55,#12285042),url("night-brush.svg");background-position:center,center;background-size:cover,cover;opacity:0;pointer-events:none;transition:opacity 1.1s}
+.sky.show{opacity:1;pointer-events:auto}
+.sky-back{position:absolute;inset:0;overflow:hidden;opacity:0;pointer-events:none;transition:opacity .8s}
+.sky-back.show{opacity:1}
+.sky-content{position:relative;z-index:2;padding:24px;text-align:center;animation:rise 1.4s both;filter:drop-shadow(0 4px 16px #10193688)}
+.sky h2{font-family:HoneyRaspberries,Georgia,serif;font-weight:400;font-size:clamp(2.8rem,8vw,5.2rem);line-height:1.05;color:#fff0bd;margin:0 0 14px;text-shadow:0 2px 0 #d19447,0 0 24px #ffd45c77}
+.sky p{font-family:HoneyRaspberries,Georgia,serif;font-size:1.35rem;color:#f6e6be;margin:0}
+.sky-close{margin-top:26px;border:1px solid #ffdc6570;background:#12295888;color:#ffefc0;border-radius:999px;padding:11px 19px;font:inherit;cursor:pointer;transition:background .2s,transform .2s}
+.sky-dot{position:absolute;color:#ffe18a;text-shadow:0 0 8px #ffe98b,0 0 20px #ffdc65,0 0 34px #ffc943;animation:sky-blink 2.5s ease-in-out infinite alternate}
+.sky-dot:nth-child(5n){color:#fff0ba}.sky-dot:nth-child(7n){color:#f0bb75}
+.shooting-star{position:absolute;width:5px;height:5px;border-radius:50%;background:#fffbe9;box-shadow:0 0 4px 2px #fff5c9,0 0 11px 4px #ffe586,0 0 22px 7px #ffd15988;opacity:0;pointer-events:none;animation:comet-flight 7s ease-in-out infinite;will-change:transform,opacity}
+.shooting-star:after{content:"";position:absolute;right:calc(100% - 2px);top:2px;width:clamp(85px,13vw,155px);height:5px;transform:rotate(-36deg);transform-origin:right center;clip-path:polygon(0 50%,100% 8%,100% 92%);background:linear-gradient(90deg,transparent 0%,#ffd15c14 35%,#ffd15c55 73%,#fff1b5 100%);border-radius:50%;box-shadow:0 0 9px #ffd95f55;filter:blur(.65px)}
+@keyframes comet-flight{0%,10%{transform:translate(0,0);opacity:0}15%{opacity:.95}72%{opacity:.85}100%{transform:translate(var(--dx),var(--dy));opacity:0}}
+@keyframes sky-blink{to{opacity:.42;transform:scale(.78)}}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@media(max-width:560px){
+ body{padding:22px 14px 24px;background-attachment:scroll}
+ h1{font-size:clamp(3rem,13vw,4.5rem)}
+ .scene{height:410px;min-height:410px}
+ .jar{transform:scale(.92)}
+ .opened .jar-button{transform:translateY(86px) scale(.52) rotate(-9deg)}
+ .stars-area{grid-template-columns:repeat(3,62px);grid-template-rows:repeat(2,65px);gap:15px 17px}
+ .star{font-size:3.1rem}.star:nth-child(2n){font-size:2.9rem}
+ .card{width:min(88vw,340px);padding:32px 26px}.card p{font-size:1rem}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+<style>
+.jar-button p{font-family:Georgia,"Times New Roman",serif;font-size:1rem;font-style:italic;letter-spacing:.035em;color:#f5e7c1;text-shadow:0 1px 8px #07132c88}
+.progress{font-family:Georgia,"Times New Roman",serif;font-size:.9rem;letter-spacing:.012em;color:#e2dece}
+.reset{font-family:Georgia,"Times New Roman",serif;font-size:.84rem;letter-spacing:.025em;color:#f5e9c9}
+</style>
+<style>
+/* Fine fill sits behind the six original stars, in the open pockets of the jar. */
+.jar-body:before,.jar-body:after{z-index:0}
+.jar-sparkles{position:absolute;z-index:0;inset:0;pointer-events:none}
+.jar-sparkles .fill-star{position:absolute;left:var(--x);top:var(--y);width:var(--size);height:var(--size);transform:rotate(var(--turn));background:#ffd873;clip-path:polygon(50% 0,62% 34%,100% 35%,70% 57%,81% 100%,50% 75%,18% 100%,30% 57%,0 35%,38% 34%);filter:drop-shadow(0 0 2px #ffd873bb);opacity:.88}
+.jar-sparkles .fill-star.warm{background:#fff0d0;filter:drop-shadow(0 0 2px #fff0d0cc)}
+.jar-sparkles .fill-star.amber{background:#f4b36f;filter:drop-shadow(0 0 2px #f4b36fcc)}
+.jar-sparkles .dust{position:absolute;left:var(--x);top:var(--y);width:var(--size);height:var(--size);border-radius:50%;background:#fff4cb;box-shadow:0 0 4px 1px #ffd977aa;opacity:.85}
+.jar-base-glint{position:absolute;z-index:0;left:34px;bottom:3px;width:88px;height:7px;border-bottom:2px solid #fff9;border-radius:0 0 70% 50%;transform:rotate(-3deg);filter:blur(.35px);opacity:.55;pointer-events:none}
+</style>
+</head>
+<body>
+<main id="main">
+<h1>Hay seis estrellas</h1>
+<section class="scene" id="scene" aria-label="Frasco y estrellas interactivas">
+<div class="table-glow" aria-hidden="true"></div>
+<button class="jar-button" id="jarButton" aria-label="Abrir el frasco de estrellas">
+<div class="jar" aria-hidden="true">
+<div class="jar-lid"></div><div class="jar-neck"></div>
+<div class="jar-body"><div class="jar-stars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><div class="jar-sparkles"><i class="fill-star" style="--x:11%;--y:7%;--size:7px;--turn:-12deg"></i>
+<i class="fill-star warm" style="--x:23%;--y:11%;--size:5px;--turn:17deg"></i>
+<i class="fill-star" style="--x:47%;--y:9%;--size:6px;--turn:-8deg"></i>
+<i class="fill-star" style="--x:73%;--y:8%;--size:7px;--turn:12deg"></i>
+<i class="fill-star" style="--x:91%;--y:11%;--size:6px;--turn:-15deg"></i>
+<i class="fill-star" style="--x:9%;--y:24%;--size:6px;--turn:9deg"></i>
+<i class="fill-star" style="--x:20%;--y:29%;--size:5px;--turn:-20deg"></i>
+<i class="fill-star" style="--x:69%;--y:23%;--size:6px;--turn:22deg"></i>
+<i class="fill-star warm" style="--x:84%;--y:27%;--size:7px;--turn:-9deg"></i>
+<i class="fill-star" style="--x:96%;--y:23%;--size:5px;--turn:14deg"></i>
+<i class="fill-star" style="--x:38%;--y:47%;--size:6px;--turn:-12deg"></i>
+<i class="fill-star" style="--x:51%;--y:47%;--size:6px;--turn:17deg"></i>
+<i class="fill-star" style="--x:92%;--y:47%;--size:6px;--turn:-8deg"></i>
+<i class="fill-star" style="--x:6%;--y:65%;--size:6px;--turn:12deg"></i>
+<i class="fill-star" style="--x:93%;--y:63%;--size:6px;--turn:-15deg"></i>
+<i class="fill-star" style="--x:6%;--y:73%;--size:5px;--turn:9deg"></i>
+<i class="fill-star" style="--x:95%;--y:73%;--size:6px;--turn:-20deg"></i>
+<i class="fill-star" style="--x:6%;--y:85%;--size:7px;--turn:22deg"></i>
+<i class="fill-star" style="--x:94%;--y:84%;--size:7px;--turn:-9deg"></i>
+<i class="fill-star" style="--x:9%;--y:94%;--size:5px;--turn:14deg"></i>
+<i class="fill-star amber" style="--x:92%;--y:94%;--size:6px;--turn:-18deg"></i>
+<i class="dust" style="--x:32%;--y:10%;--size:2px"></i>
+<i class="dust" style="--x:63%;--y:14%;--size:2px"></i>
+<i class="dust" style="--x:15%;--y:32%;--size:2px"></i>
+<i class="dust" style="--x:90%;--y:31%;--size:2px"></i>
+<i class="dust" style="--x:35%;--y:47%;--size:2px"></i>
+<i class="dust" style="--x:89%;--y:59%;--size:2px"></i>
+<i class="dust" style="--x:79%;--y:80%;--size:2px"></i>
+<i class="dust" style="--x:23%;--y:87%;--size:2px"></i></div></div><div class="jar-base-glint" aria-hidden="true"></div></div>
+</div>
+<p>Toca el frasco para abrir</p></button>
+<div class="stars-area" id="starsArea" aria-label="Seis estrellas">
+<button class="star" aria-label="Estrella 1">★</button><button class="star" aria-label="Estrella 2">★</button><button class="star" aria-label="Estrella 3">★</button><button class="star" aria-label="Estrella 4">★</button><button class="star" aria-label="Estrella 5">★</button><button class="star" aria-label="Estrella 6">★</button>
+</div>
+</section>
+<p class="progress" id="progress" aria-live="polite">6 mensajes esperan ser descubiertos</p>
+<button class="reset" id="resetButton">Volver a guardar las estrellas</button>
+</main>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="card"><button class="close" id="closeModal" aria-label="Cerrar">×</button><div class="big-star" aria-hidden="true">★</div><h2 id="modalTitle">Estrella para ti</h2><p id="messageText"></p></div></div>
+<div class="sky" id="sky" aria-hidden="true"><div class="sky-back" id="skyBack"></div><div class="sky-content"><h2>Tu cielo está completo</h2><p>Seis pequeñas luces, todas brillando para ti.</p><button class="sky-close" id="skyClose">Volver a las estrellas</button></div></div>
+<script>
+const mensajes=[
+ "Hoy el universo parece haberse puesto de acuerdo: entre tantas posibilidades, las estrellas se alinearon para celebrar que llegaste al mundo. Y aunque el cielo entero brillara por ti, seguirías siendo mucho más que una fecha: eres alguien muy importante para mí. Feliz cumpleaños, Ashley.",
+ "Dicen que los navegantes buscaban la Estrella Polar para encontrar el camino a casa. Para mí, tú serías esa estrella: contigo encuentro seguridad, calma y la tranquilidad de sentir que estoy donde quiero estar.",
+ "Hay personas que consiguen que los momentos sencillos se vuelvan inolvidables. Tú tienes esa forma de hacer especial una conversación, una risa o cualquier rato compartido.",
+ "Ojalá este nuevo año te acerque a todo lo que sueñas y te regale tiempo para disfrutar de las cosas bonitas que mereces. Que nunca te falten motivos para reír con el corazón.",
+ "Me encanta que a tu lado hasta el silencio se sienta cómodo, y que un día cualquiera pueda mejorar con solo compartirlo contigo. Gracias por hacer tan bonito lo cotidiano.",
+ "No necesitas hacer nada extraordinario para ser especial; basta con ser tú. Tu manera de mirar, escuchar y reír hace que el mundo se sienta un poquito más amable."
+];
+const scene=document.querySelector("#scene");
+const jarButton=document.querySelector("#jarButton");
+const stars=[...document.querySelectorAll(".star")];
+const modal=document.querySelector("#modal");
+const messageText=document.querySelector("#messageText");
+const modalTitle=document.querySelector("#modalTitle");
+const progress=document.querySelector("#progress");
+const sky=document.querySelector("#sky");
+const skyBack=document.querySelector("#skyBack");
+const seen=new Set();
+
+jarButton.addEventListener("click",()=>{scene.classList.add("opened");jarButton.setAttribute("aria-label","Frasco abierto")});
+stars.forEach((star,index)=>star.addEventListener("click",()=>{
+ messageText.textContent=mensajes[index];
+ modalTitle.textContent="Estrella "+(index+1);
+ modal.classList.add("show");
+ star.classList.add("seen");
+ seen.add(index);
+ const left=6-seen.size;
+ progress.textContent=left===0?"¡Leíste los seis mensajes! Mira el cielo.":left+" "+(left===1?"mensaje espera":"mensajes esperan")+" ser descubiertos";
+ if(seen.size===6)setTimeout(()=>{closeMessage();skyBack.classList.add("show");sky.classList.add("show");sky.setAttribute("aria-hidden","false")},550);
+}));
+function closeMessage(){modal.classList.remove("show")}
+function hideSky(){sky.classList.remove("show");skyBack.classList.remove("show");sky.setAttribute("aria-hidden","true")}
+function resetStars(){closeMessage();hideSky();seen.clear();stars.forEach(star=>star.classList.remove("seen"));scene.classList.remove("opened");progress.textContent="6 mensajes esperan ser descubiertos";jarButton.setAttribute("aria-label","Abrir el frasco de estrellas")}
+document.querySelector("#closeModal").addEventListener("click",closeMessage);
+modal.addEventListener("click",event=>{if(event.target===modal)closeMessage()});
+document.querySelector("#skyClose").addEventListener("click",hideSky);
+document.querySelector("#resetButton").addEventListener("click",resetStars);
+document.addEventListener("keydown",event=>{if(event.key==="Escape"){closeMessage();hideSky()}});
+function makeSky(){
+ skyBack.innerHTML="";
+ const width=window.innerWidth,height=window.innerHeight;
+ for(let i=0;i<120;i++){
+  const dot=document.createElement("i");
+  dot.className="sky-dot";dot.textContent=i%7===0?"★":"·";
+  dot.style.left=Math.random()*100+"%";dot.style.top=Math.random()*100+"%";
+  dot.style.fontSize=(9+Math.random()*23)+"px";dot.style.animationDuration=(1.4+Math.random()*3)+"s";
+  skyBack.appendChild(dot);
+ }
+ const angle=36*Math.PI/180,length=Math.min(width*.52,height*.48);
+ const dx=length*Math.cos(angle),dy=-length*Math.sin(angle);
+ for(let i=0;i<5;i++){
+  const comet=document.createElement("i");
+  const startX=Math.random()*Math.max(1,width-dx),startY=height*(.48+Math.random()*.38);
+  comet.className="shooting-star";comet.style.left=startX+"px";comet.style.top=startY+"px";
+  comet.style.setProperty("--dx",dx+"px");comet.style.setProperty("--dy",dy+"px");
+  comet.style.animationDuration=(5.5+Math.random()*2.8)+"s";comet.style.animationDelay=Math.random()*4.5+"s";
+  skyBack.appendChild(comet);
+ }
+}
+makeSky();
+</script>
+</body>
+</html>
+
+
+
+
+

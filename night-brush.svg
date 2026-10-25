@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+<defs>
+ <linearGradient id="night" x1=".1" y1="1" x2=".85" y2="0"><stop stop-color="#182e62"/><stop offset=".48" stop-color="#1d3d7c"/><stop offset="1" stop-color="#101b3c"/></linearGradient>
+ <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6b92c3"/><stop offset=".45" stop-color="#345a9a"/><stop offset="1" stop-color="#243e77"/></linearGradient>
+ <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7d87e"/><stop offset=".5" stop-color="#d79c49"/><stop offset="1" stop-color="#a96639"/></linearGradient>
+ <filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".022" numOctaves="2" seed="12" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="5"/></filter>
+ <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="19"/><feColorMatrix values=".22 0 0 0 .2 .22 0 0 0 .25 .22 0 0 0 .35 0 0 0 .12 0"/></filter>
+</defs>
+<rect width="1600" height="1000" fill="url(#night)"/>
+<g fill="none" stroke-linecap="round" filter="url(#rough)">
+ <path d="M-80 280 C120 110 310 120 475 210 S760 390 930 255 S1250 65 1690 180" stroke="#7898c2" stroke-width="78" opacity=".16"/>
+ <path d="M-60 295 C130 145 300 155 470 235 S755 400 925 275 S1265 95 1660 205" stroke="#b2c5d5" stroke-width="15" opacity=".24"/>
+ <path d="M-100 495 C170 340 320 365 510 435 S810 570 1000 430 S1290 285 1700 370" stroke="#527cb4" stroke-width="100" opacity=".22"/>
+ <path d="M-90 515 C170 365 340 390 515 455 S815 590 995 450 S1300 310 1680 390" stroke="#9bb8d0" stroke-width="17" opacity=".23"/>
+ <path d="M-100 760 C160 600 360 620 570 695 S930 805 1130 645 S1390 510 1700 580" stroke="#5478ac" stroke-width="120" opacity=".19"/>
+ <path d="M-80 780 C180 630 370 650 565 720 S930 820 1120 675 S1400 540 1690 600" stroke="#b0bfd0" stroke-width="16" opacity=".17"/>
+ <path d="M120 120 C250 205 350 215 470 175" stroke="#d6b36f" stroke-width="12" opacity=".3"/>
+ <path d="M1010 520 C1160 410 1300 385 1450 420" stroke="#d7bd7d" stroke-width="14" opacity=".28"/>
+ <path d="M220 890 C390 810 520 850 670 900" stroke="#8ea7c1" stroke-width="20" opacity=".2"/>
+</g>
+<g fill="none" stroke-linecap="round" opacity=".24">
+ <path d="M80 350 Q200 325 310 350 M560 315 Q670 350 765 330 M1110 245 Q1220 205 1340 230" stroke="#d4dce0" stroke-width="4"/>
+ <path d="M140 565 Q260 520 380 555 M650 500 Q745 545 845 515 M1160 460 Q1290 400 1420 435" stroke="#e2d6ae" stroke-width="4"/>
+ <path d="M120 820 Q260 775 390 805 M720 755 Q840 805 950 775 M1210 720 Q1330 660 1470 690" stroke="#bed1df" stroke-width="5"/>
+</g>
+<rect width="1600" height="1000" filter="url(#grain)" opacity=".18"/>
+</svg>
